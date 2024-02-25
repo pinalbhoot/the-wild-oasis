@@ -58,25 +58,29 @@ function CreateCabinForm({cabinToEdit ={},onCloseModel}) {
     <Form onSubmit={handleSubmit(onSubmit,onError)} type={onCloseModel ? "model" : "regular"}>
       
 
-      <FormRow lable= "cabin name" error={errors?.name?.message} >
+      <FormRow label= "cabin name" error={errors?.name?.message} >
+     
           <Input type="text" id="name"  disabled={isWorking} {...register("name",{required:"This Field is Requried"})} />
       </FormRow>
 
-      <FormRow lable = " Maximun Capacity " error={errors?.maxCapacity?.message} >
+      <FormRow label = " Maximun Capacity " error={errors?.maxCapacity?.message} >
        
         <Input type="number" id="maxCapacity"  disabled={isWorking}  {...register("maxCapacity",{required:"This Field is Requried",
       min:{
         value:1,
-        message:"Capacity should be at least 1"
-      }})} />
+        message:"Capacity should be at least 1",
+      },})} />
       </FormRow>
 
-      <FormRow  lable = "Regular Price " error={errors?.regularPrice?.message} >
+      <FormRow  label = "Regular Price " error={errors?.regularPrice?.message} >
       
-        <Input type="number" id="regularPrice" disabled={isWorking} {...register("regularPrice",{required:"This Field is Requried"})}/>
+        <Input type="number" id="regularPrice" disabled={isWorking} {...register("regularPrice",{required:"This Field is Requried",min: {
+              value: 1,
+              message: "Capacity should be at least 1",
+            },})}/>
       </FormRow>
 
-      <FormRow  lable = " Discount " error={errors?.discountPrice?.message} >
+      <FormRow  label = " Discount " error={errors?.discountPrice?.message} >
        
         <Input type="number" id="discountPrice"  disabled={isWorking} defaultValue={0} {...register("discountPrice",{
           required:"This Field is Requried",
@@ -85,7 +89,7 @@ function CreateCabinForm({cabinToEdit ={},onCloseModel}) {
       })} />
       </FormRow>
 
-      <FormRow  lable = "Description for websitees" error={errors?.description?.message} >    
+      <FormRow  label = "Description for websitees" error={errors?.description?.message} >    
           <Textarea type="number" id="description"   disabled={isWorking} defaultValue="" {...register("description",{required:"This Field is Requried"})}/>
       </FormRow>
 
